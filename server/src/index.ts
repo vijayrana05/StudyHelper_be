@@ -12,10 +12,33 @@ import queryNotesRoutes from './routes/queryNotes'
 dotenv.config();
 
 const app = express();
-const PORT = Number(process.env.PORT) || 5000;
+const PORT = parseInt(process.env.PORT || '5000', 10);
 
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://study-helper-fe-vd62.vercel.app' // Replace with your actual frontend URL
+  ],
+  credentials: true
+}));
 app.use(express.json());
+
+// Root route
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'StudyHelper API is running!',
+    status: 'success',
+    endpoints: {
+      auth: '/api/authRoutes',
+      notes: '/api/notesRoutes',
+      upload: '/api/uploadRoutes',
+      search: '/api/searchRoutes',
+      askAi: '/api/askAiRoutes',
+      queryNotes: '/api/queryNotesRoutes'
+    }
+  });
+});
 
 app.use('/api/authRoutes', authRoutes);
 app.use('/api/notesRoutes', notesRoutes);
