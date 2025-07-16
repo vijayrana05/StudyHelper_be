@@ -18,7 +18,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:5173',
-    /^https:\/\/study-helper-fe.*\.vercel\.app$/  // This matches any study-helper-fe-*.vercel.app
+    /^https:\/\/.*\.vercel\.app$/  // This matches any *.vercel.app domain
   ],
   credentials: true
 }));
