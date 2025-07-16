@@ -10,21 +10,23 @@ import askAiRoutes from './routes/askAiRoutes'
 import queryNotesRoutes from './routes/queryNotes'
 
 dotenv.config();
+
 const app = express();
+const PORT = Number(process.env.PORT) || 5000;
+
 app.use(cors());
 app.use(express.json());
 
 app.use('/api/authRoutes', authRoutes);
 app.use('/api/notesRoutes', notesRoutes);
-app.use('/api/uploadRoutes',uploadRoutes )
-app.use('/api/searchRoutes',searchRoutes )
-app.use('/api/askAiRoutes',askAiRoutes)
-app.use('/api/queryNotesRoutes',queryNotesRoutes)
-
+app.use('/api/uploadRoutes', uploadRoutes);
+app.use('/api/searchRoutes', searchRoutes);
+app.use('/api/askAiRoutes', askAiRoutes);
+app.use('/api/queryNotesRoutes', queryNotesRoutes);
 
 // Connect to DB and start server
 connectDB().then(() => {
-  app.listen(process.env.PORT, () => {
-    console.log(`🚀 Server running on port ${process.env.PORT}`);
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Server running on port ${PORT}`);
   });
 });
