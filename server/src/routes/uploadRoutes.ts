@@ -4,8 +4,6 @@ import multer from 'multer';
 import pdfParse from 'pdf-parse';
 import fs from 'fs/promises';
 import { summarizeText } from '../utils/summarize'; // We'll define this
-import { createEmbeddings } from '../utils/embedding';
-import Note from '../models/note';
 import { verifyToken } from '../middleware/auth';
 
 const router = express.Router();

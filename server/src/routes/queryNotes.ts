@@ -1,5 +1,4 @@
 import express from 'express';
-import { searchNotes } from '../utils/query'; // the function you wrote
 import { searchInsideNote } from '../utils/queryNotes';
 
 const router = express.Router();

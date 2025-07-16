@@ -1,6 +1,5 @@
 import express, { Request ,Response } from 'express';
 import Note from '../models/note';
-import { tiptapJsonToPlainText } from '../utils/tiptapToText';
 
 import { verifyToken } from '../middleware/auth';
 import { createEmbeddings, deleteNoteEmbeddings } from '../utils/embedding';
