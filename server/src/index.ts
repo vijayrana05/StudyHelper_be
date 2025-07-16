@@ -18,7 +18,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:5173',
-    'https://study-helper-fe-vd62.vercel.app' // Replace with your actual frontend URL
+    /^https:\/\/study-helper-fe.*\.vercel\.app$/  // This matches any study-helper-fe-*.vercel.app
   ],
   credentials: true
 }));
