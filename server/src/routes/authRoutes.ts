@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import dotenv from 'dotenv';
+import { verifyToken } from '../middleware/auth';
 
 dotenv.config();
 
@@ -40,7 +41,7 @@ router.post('/signup', async (req: Request, res: Response) => {
 });
 
 // Login route
-router.post('/login', async (req: Request, res: Response)=> {
+router.post('/login', verifyToken,async (req: Request, res: Response)=> {
   const { username, password }= req.body;
 
   try {
