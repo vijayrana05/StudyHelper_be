@@ -31,6 +31,12 @@ router.post('/', verifyToken, async (req:any, res:any) => {
 router.get('/', verifyToken, async (req, res) => {
   try {
     const userId = (req as any).user.id;
+    // if(!userId) {
+    //   console.log("und id")
+    // }
+    // else{
+    // console.log(userId)
+    // }
     const notes = await Note.find({ owner:userId }).sort({ updatedAt: -1 });
     // console.log(userId)
     res.json(notes);

@@ -1,5 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
+
+interface decodedType {
+  id: string,
+}
 
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
     // console.log("headers = ",req.headers)
@@ -14,7 +18,15 @@ export const verifyToken = (req: Request, res: Response, next: NextFunction) => 
 
   try {
     // console.log(token)
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!);
+    const decoded  = jwt.verify(token, process.env.JWT_SECRET!);
+    if(decoded) {
+      console.log(decoded)
+    }
+    else{
+      console.log("nothing")
+    }
+    // {console.log(decoded)}
+    
     (req as any).user = decoded; // you can type this better later
     next();
   } catch (err) {
